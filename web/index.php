@@ -3,7 +3,6 @@
 mb_internal_encoding('UTF-8');
 date_default_timezone_set('Europe/Moscow');
 
-// comment out the following two lines when deployed to production
 if (!empty($_SERVER['SERVER_ADDR']) && $_SERVER['SERVER_ADDR'] == '127.0.0.1') {
 	defined('YII_DEBUG') or define('YII_DEBUG', true);
 	defined('YII_ENV') or define('YII_ENV', 'dev');
