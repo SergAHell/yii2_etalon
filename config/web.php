@@ -12,19 +12,18 @@ $config = [
         ],
     ],
     'components' => [
-        'formatter' => [
-            'defaultTimeZone' => 'Europe/Moscow',
-        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'kTswSP3UAOMuS6cmp-HUHm7cx0MT8zBa',
+            'cookieValidationKey' => 'aMx35_mGtT3cl3x_RTKtrUhCdqYEPY86',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => 'app\models\AuthUser',
             'enableAutoLogin' => true,
+            'loginUrl'=> 'site/login',
+//            'loginAdminUrl'=> '/admin/default/login',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -47,23 +46,21 @@ $config = [
         ],
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
+//            'dsn' => 'mysql:host=localhost;dbname=yii2basic',
             'username' => 'root',
             'password' => '',
             'charset' => 'utf8',
         ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
-            'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'rules' => [
+            'enablePrettyUrl' => true,
+//            'rules' => [
+//                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+//                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-//                '<module><controller:\w+>/<action:\w+>' => '<module>/<controller>/<action>',
-            ],
+//            ],
         ],
-//        'session' => [
-//            'name' => 'PHPBACKSESSID',
-//        ],
     ],
     'params' => $params,
 ];

@@ -98,6 +98,8 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
+        var_dump('password', $password);
+        die();
         return $this->password === $password;
     }
 }

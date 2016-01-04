@@ -13,7 +13,7 @@ class AdminAsset extends AssetBundle
     public $css = [
         'dist/css/AdminLTE.min.css',
         'plugins/datatables/dataTables.bootstrap.css',
-        '/f/css/admin.css',
+//        '/f/css/admin.css',
     ];
     public $js = [
         'dist/js/app.min.js',
@@ -24,7 +24,7 @@ class AdminAsset extends AssetBundle
         'app\modules\admin\assets\FontAwesomeAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'app\modules\admin\assets\BootboxAsset',
+//        'app\modules\admin\assets\BootboxAsset',
     ];
 
     public $publishOptions = [

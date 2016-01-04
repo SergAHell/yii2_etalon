@@ -1,12 +1,8 @@
 <?php
 
-mb_internal_encoding('UTF-8');
-date_default_timezone_set('Europe/Moscow');
-
 // NOTE: Make sure this file is not accessible when deployed to production
 if (!in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
-    defined('YII_DEBUG') or define('YII_DEBUG', true);
-    defined('YII_ENV') or define('YII_ENV', 'dev');
+    die('You are not allowed to access this file.');
 }
 
 defined('YII_DEBUG') or define('YII_DEBUG', true);
