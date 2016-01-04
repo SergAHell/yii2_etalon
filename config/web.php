@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
+//    'defaultRoute' => '/admin/test',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'modules' => [

@@ -19,7 +19,7 @@ use app\modules\admin\assets\AdminAsset;
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= Html::csrfMetaTags() ?>
         <?php $this->head() ?>
-        <title>qqq<?= Html::encode($this->title) ?></title>
+        <title><?= Html::encode($this->title) ?></title>
     </head>
     
     <?php if (false && (Yii::$app->controller->action->id === 'login' || Yii::$app->user->isGuest)) {
