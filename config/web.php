@@ -11,6 +11,14 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Admin',
         ],
+        'gridview' =>  [
+            'class' => '\kartik\grid\Module'
+            // enter optional module parameters below - only if you need to  
+            // use your own export download action or custom translation 
+            // message source
+            // 'downloadAction' => 'gridview/export/download',
+            // 'i18n' => []
+        ]
     ],
     'components' => [
         'request' => [
@@ -56,11 +64,14 @@ $config = [
             'class' => 'yii\web\UrlManager',
             'showScriptName' => false,
             'enablePrettyUrl' => true,
-//            'rules' => [
-//                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+            'rules' => [
+//                'http://<a:(a).e.ru>'=>'/admin',
+//                'c' => '/admin/test/create',
+//                'v/<id:\d+>' => '/admin/test/view',
+//                '<module:(admin)>/<controller:\w+>/<id:\d+>' => '/<module>/<controller>/view',
 //                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
 //                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-//            ],
+            ],
         ],
     ],
     'params' => $params,

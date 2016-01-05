@@ -1,7 +1,13 @@
 <?php
 
 use yii\helpers\Html;
+//use yii\widgets\DetailView;
+use kartik\detail\DetailView;
 use yii\widgets\Breadcrumbs;
+use yii\bootstrap\Modal;
+use yii\bootstrap\Tabs;
+use yii\bootstrap\Alert;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Test */
@@ -26,6 +32,33 @@ $this->params['breadcrumbs'][] = 'Update';
 						'model' => $model,
 					]) ?>
 				</div>
+
+				<?php
+				Modal::begin([
+					'header' => '<h4 class="modal-title">Detail View Demo</h4>',
+					'toggleButton' => ['label' => '<i class="glyphicon glyphicon-th-list"></i> Detail View in Modal', 'class' => 'btn btn-primary']
+				]);
+				echo DetailView::widget([
+					'model' => $model,
+					'mode'=>DetailView::MODE_EDIT,
+					'condensed' => true,
+					'hover' => true,
+					'panel' => [
+						'heading' => 'Test # ' . $model->id,
+						'type' => DetailView::TYPE_INFO,
+					],
+
+					'attributes' => [
+						'id',
+						'name',
+						'age',
+					],
+				]);
+
+				Modal::end();
+				?>
+				
+				
 			</div>
 		</div>
 	</div>

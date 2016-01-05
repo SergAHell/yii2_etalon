@@ -19,7 +19,11 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "almasaeed2010/adminlte": "v2.3.2",
-        "components/font-awesome": "4.5.0"
+        "components/font-awesome": "4.5.0",
+        "kartik-v/yii2-grid": "v3.0.8",
+        "kartik-v/yii2-mpdf": "1.0.0.x-dev",
+        "kartik-v/yii2-detail-view": "v1.7.3",
+        "kartik-v/yii2-widgets": "3.4.0.x-dev"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

@@ -28,8 +28,8 @@ class Test extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['age'], 'integer'],
-            [['name'], 'string', 'max' => 255]
+            [['age'], 'integer', 'max'=> 100 ],
+            [['name'], 'string', 'max' => 255 ]
         ];
     }
 
@@ -39,9 +39,9 @@ class Test extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'age' => 'Age',
+            'id' => 'ИД',
+            'name' => 'Имя',
+            'age' => 'Возраст',
         ];
     }
 }

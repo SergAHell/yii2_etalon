@@ -1,15 +1,14 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\Breadcrumbs;
+use kartik\grid\GridView;
 
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TestSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Список: ' ;
+$this->title = 'Список: ';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -29,13 +28,42 @@ $this->params['breadcrumbs'][] = $this->title;
 						'dataProvider' => $dataProvider,
 //						'filterModel' => $searchModel,
 						'columns' => [
-							['class' => 'yii\grid\SerialColumn'],
+							['class' => '\kartik\grid\BooleanColumn', 'trueLabel'=>'Yes', 'falseLabel'=>'No',],
+							['class' => '\kartik\grid\RadioColumn', 'name'=>'id'],
 //							'id',
 							'name',
+							['class' => '\kartik\grid\CheckboxColumn', 'name'=>'age'],
+							[
+								'class' => '\kartik\grid\SerialColumn',
+							],
 							'age',
-							['class' => 'yii\grid\ActionColumn'],
+							[
+								'class' => '\kartik\grid\ActionColumn',
+								'deleteOptions' => ['label' => '<i class="glyphicon glyphicon-remove"></i>']
+							],
+						],
+						'responsive' => true,
+						'hover' => true,
+//						'resizableColumns' => true,
+//						'resizeStorageKey' => Yii::$app->user->id . '-' . date("m"),
+//						'floatHeader' => true,
+//						'floatHeaderOptions' => ['scrollingTop' => '50'],
+						'showPageSummary' => true,
+//						'toolbar' => [
+//							'{export}',
+//							'{toggleData}'
+//						],
+						'toggleDataContainer' => ['class' => 'btn-group-sm'],
+						'exportContainer' => ['class' => 'btn-group-sm'],
+						'panel' => [
+							'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i>Test</h3>',
+							'type'=>'success',
+							'before'=>Html::a('<i class="glyphicon glyphicon-plus"></i> Create Test', ['create'], ['class' => 'btn btn-success btn-flat']),
+							'after'=>Html::a('<i class="glyphicon glyphicon-repeat"></i> Reset Grid', ['index'], ['class' => 'btn btn-info btn-flat']),
+							'footer'=>false
 						],
 					]); ?>
+
 
 				</div>
 			</div>
