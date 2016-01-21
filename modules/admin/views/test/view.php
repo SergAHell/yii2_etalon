@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 					<?php
 					Modal::begin([
 						'header' => '<h4 class="modal-title">Detail View Demo</h4>',
-						'toggleButton' => ['label' => '<i class="glyphicon glyphicon-th-list"></i> Detail View in Modal', 'class' => 'btn btn-primary']
+						'toggleButton' => ['name'=>'span', 'label' => '<i class="glyphicon glyphicon-th-list"></i> Detail View in Modal', 'class' => 'btn btn-primary']
 					]);
 //					echo Alert::widget([
 //						'options' => [
@@ -66,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //					]);
 					$dv = DetailView::widget([
 						'model' => $model,
-						'mode'=>DetailView::MODE_EDIT,
+						'mode'=>DetailView::MODE_VIEW,
 						'condensed' => true,
 						'hover' => true,
 						'panel' => [
@@ -80,35 +80,36 @@ $this->params['breadcrumbs'][] = $this->title;
 							'age',
 						],
 					]);
+					echo $dv;
 
-					echo Tabs::widget([
-						'items' => [
-							[
-								'label' => 'One',
-								'content' => 'Anim pariatur cliche...',
-								'active' => true
-							],
-							[
-								'label' => 'Two',
-								'content' => $dv,
-								'headerOptions' => [],
-								'options' => ['id' => 'myveryownID'],
-							],
-							[
-								'label' => 'Dropdown',
-								'items' => [
-									[
-										'label' => 'DropdownA',
-										'content' => $dv,
-									],
-									[
-										'label' => 'DropdownB',
-										'content' => 'DropdownB, Anim pariatur cliche...',
-									],
-								],
-							],
-						],
-					]);
+//					echo Tabs::widget([
+//						'items' => [
+//							[
+//								'label' => 'One',
+//								'content' => 'Anim pariatur cliche...',
+//								'active' => true
+//							],
+//							[
+//								'label' => 'Two',
+//								'content' => $dv,
+//								'headerOptions' => [],
+//								'options' => ['id' => 'myveryownID'],
+//							],
+//							[
+//								'label' => 'Dropdown',
+//								'items' => [
+//									[
+//										'label' => 'DropdownA',
+//										'content' => $dv,
+//									],
+//									[
+//										'label' => 'DropdownB',
+//										'content' => 'DropdownB, Anim pariatur cliche...',
+//									],
+//								],
+//							],
+//						],
+//					]);
 					Modal::end();
 					?>
 

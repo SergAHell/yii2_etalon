@@ -26,50 +26,50 @@
 		</form>
 -->		<!-- /.search form -->
 		<?php
-		$types = [];
-		echo app\modules\admin\widgets\Menu::widget(
-			[
-				'options' => [
-					'class' => 'sidebar-menu'
-				],
-				'items' => [
-					[
-						'label' => 'Персоны',
-						'url' => '/admin/person/index?clear',
-						'icon' => 'fa-group',
-						'active' => strpos(Yii::$app->request->url, '/admin/person/') === 0,
-					],
-					[
-						'label' => 'Мероприятия',
-						'url' => '/admin/event/index',
-						'icon' => 'fa-calendar',
-						'active' => strpos(Yii::$app->request->url, '/admin/event') === 0,
-					],
-					[
-						'label' => 'Настройки',
-						'url' => ['#'],
-						'icon' => 'fa-cog',
-						'options' => [
-							'class' => 'treeview',
-						],
-						'items' => [
-							[
-								'label' => 'Персоны',
-								'url' => '/admin/person/index?clear',
-								'icon' => 'fa-group',
-								'items' => $types,
-								'active' => strpos(Yii::$app->request->url, '/admin/person/') === 0,
-							],
-							[
-								'label' => 'Мероприятия',
-								'url' => '/admin/event/index',
-								'icon' => 'fa-calendar',
-								'active' => strpos(Yii::$app->request->url, '/admin/event') === 0,
-							],
-						],
-					],
-				],
-			]);
+//		$types = [];
+//		echo app\modules\admin\widgets\Menu::widget(
+//			[
+//				'options' => [
+//					'class' => 'sidebar-menu'
+//				],
+//				'items' => [
+//					[
+//						'label' => 'Персоны',
+//						'url' => '/admin/person/index?clear',
+//						'icon' => 'fa-group',
+//						'active' => strpos(Yii::$app->request->url, '/admin/person/') === 0,
+//					],
+//					[
+//						'label' => 'Мероприятия',
+//						'url' => '/admin/event/index',
+//						'icon' => 'fa-calendar',
+//						'active' => strpos(Yii::$app->request->url, '/admin/event') === 0,
+//					],
+//					[
+//						'label' => 'Настройки',
+//						'url' => ['#'],
+//						'icon' => 'fa-cog',
+//						'options' => [
+//							'class' => 'treeview',
+//						],
+//						'items' => [
+//							[
+//								'label' => 'Персоны',
+//								'url' => '/admin/person/index?clear',
+//								'icon' => 'fa-group',
+//								'items' => $types,
+//								'active' => strpos(Yii::$app->request->url, '/admin/person/') === 0,
+//							],
+//							[
+//								'label' => 'Мероприятия',
+//								'url' => '/admin/event/index',
+//								'icon' => 'fa-calendar',
+//								'active' => strpos(Yii::$app->request->url, '/admin/event') === 0,
+//							],
+//						],
+//					],
+//				],
+//			]);
 		?>
 
 		<!-- Sidebar Menu -->
