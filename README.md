@@ -1,101 +1,48 @@
-Yii 2 Basic Project Template
-============================
+-- Adminer 4.2.1 MySQL dump
 
-Yii 2 Basic Project Template is a skeleton [Yii 2](http://www.yiiframework.com/) application best for
-rapidly creating small projects.
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-The template contains the basic features including user login/logout and a contact page.
-It includes all commonly used configurations that would allow you to focus on adding new
-features to your application.
+DROP TABLE IF EXISTS `admin_user`;
+CREATE TABLE `admin_user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `auth_key` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `password_hash` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password_reset_token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `role` enum('guest','moder','admin') COLLATE utf8_unicode_ci NOT NULL,
+  `is_blocked` tinyint(1) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-[![Latest Stable Version](https://poser.pugx.org/yiisoft/yii2-app-basic/v/stable.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Total Downloads](https://poser.pugx.org/yiisoft/yii2-app-basic/downloads.png)](https://packagist.org/packages/yiisoft/yii2-app-basic)
-[![Build Status](https://travis-ci.org/yiisoft/yii2-app-basic.svg?branch=master)](https://travis-ci.org/yiisoft/yii2-app-basic)
+INSERT INTO `admin_user` (`id`, `username`, `email`, `auth_key`, `password_hash`, `password_reset_token`, `role`, `is_blocked`) VALUES
+(1,	'Администратор',	'admin',	'dPDaSwoI9uJuto-Piyv7c_vRvluEN1Fi',	'$2y$13$XZX1OY5nLUDvp872JqNf0OVKgCdFW4o/RODHyaGFx3Cz5MW1G/UgO',	NULL,	'admin',	0),
+(2,	'Алексей',	'boss',	'LznFe5oeZUSsc1kNXRKIuRmQva3f9Jbr',	'$2y$13$cUiw7X6tD4C.WbVk5.9a7OWKQrFJemUAchFLzGt578/ko3qHuNn/q',	NULL,	'admin',	0),
+(3,	'Афоня',	'Afonya',	'HG15NVnxlsiQkfUtJbltfvVjrD2wkbHq',	'$2y$13$Z1qtJYgNBPF/DY.C8a5kv.lSrxd9QjRxQ7TmS/8eVtT70QzZzH1QG',	NULL,	'guest',	0);
 
-DIRECTORY STRUCTURE
--------------------
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE `test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `test_age_index` (`age`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-      assets/             contains assets definition
-      commands/           contains console commands (controllers)
-      config/             contains application configurations
-      controllers/        contains Web controller classes
-      mail/               contains view files for e-mails
-      models/             contains model classes
-      runtime/            contains files generated during runtime
-      tests/              contains various tests for the basic application
-      vendor/             contains dependent 3rd-party packages
-      views/              contains view files for the Web application
-      web/                contains the entry script and Web resources
+INSERT INTO `test` (`id`, `name`, `age`) VALUES
+(1,	'afdsfdsfds',	2),
+(2,	'aaaaaaaaaaaaaaa',	4343),
+(3,	'rewrewrwere',	444),
+(4,	'',	NULL),
+(5,	'werwe',	NULL),
+(6,	'dsfsd',	NULL),
+(7,	'dsfsd',	NULL),
+(8,	'dsfsd',	NULL),
+(9,	'4543543534',	11),
+(10,	'gfdhgfdh',	5),
+(11,	'75647567',	65);
 
-
-
-REQUIREMENTS
-------------
-
-The minimum requirement by this project template that your Web server supports PHP 5.4.0.
-
-
-INSTALLATION
-------------
-
-### Install from an Archive File
-
-Extract the archive file downloaded from [yiiframework.com](http://www.yiiframework.com/download/) to
-a directory named `basic` that is directly under the Web root.
-
-Set cookie validation key in `config/web.php` file to some random secret string:
-
-```php
-'request' => [
-    // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-    'cookieValidationKey' => '<secret random string goes here>',
-],
-```
-
-You can then access the application through the following URL:
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-### Install via Composer
-
-If you do not have [Composer](http://getcomposer.org/), you may install it by following the instructions
-at [getcomposer.org](http://getcomposer.org/doc/00-intro.md#installation-nix).
-
-You can then install this project template using the following command:
-
-~~~
-php composer.phar global require "fxp/composer-asset-plugin:~1.0.0"
-php composer.phar create-project --prefer-dist --stability=dev yiisoft/yii2-app-basic basic
-~~~
-
-Now you should be able to access the application through the following URL, assuming `basic` is the directory
-directly under the Web root.
-
-~~~
-http://localhost/basic/web/
-~~~
-
-
-CONFIGURATION
--------------
-
-### Database
-
-Edit the file `config/db.php` with real data, for example:
-
-```php
-return [
-    'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=localhost;dbname=yii2basic',
-    'username' => 'root',
-    'password' => '1234',
-    'charset' => 'utf8',
-];
-```
-
-**NOTE:** Yii won't create the database for you, this has to be done manually before you can access it.
-
-Also check and edit the other files in the `config/` directory to customize your application.
+-- 2016-01-22 05:12:12
