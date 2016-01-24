@@ -1,0 +1,1 @@
+<?= yii::$app->get('adminLTE')->run($content); ?>

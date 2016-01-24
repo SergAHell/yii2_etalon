@@ -17,7 +17,7 @@ class Menu extends \yii\widgets\Menu
     /**
      * @inheritdoc
      */
-    public $linkTemplate = '<a href="{url}">{icon} {label}</a>';
+    public $linkTemplate = '<a href="{url}">{icon} <span>{label}</span></a>';
     public $submenuTemplate = "\n<ul class='treeview-menu' {show}>\n{items}\n</ul>\n";
     public $activateParents = true;
     /**
@@ -83,7 +83,7 @@ class Menu extends \yii\widgets\Menu
             $menu = $this->renderItem($item);
             if (!empty($item['items'])) {
                 $menu .= strtr($this->submenuTemplate, [
-                    '{show}' => "style='display: block'",
+//                    '{show}' => "style='display: block'",
                     '{items}' => $this->renderItems($item['items']),
                 ]);
             }

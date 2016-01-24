@@ -60,6 +60,9 @@ $config = [
             'password' => '',
             'charset' => 'utf8',
         ],
+        'adminLTE' => [
+            'class'=>'app\modules\admin\widgets\adminLTE\AdminLTE',
+        ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'showScriptName' => false,

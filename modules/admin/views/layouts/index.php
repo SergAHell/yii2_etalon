@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             ['class' => '\kartik\grid\SerialColumn'],
 //							'id',
                             'name',
-                            'population',
+//                            'population',
                             [
                                 'class' => '\kartik\grid\ActionColumn',
                                 'template' => '{view} {update} {delete}',

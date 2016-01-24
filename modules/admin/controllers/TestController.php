@@ -15,6 +15,10 @@ use app\modules\admin\base\BaseController;
  */
 class TestController extends BaseController
 {
+    public $layout = 'altmain';
+    public $modelName = 'Test';
+
+
     public function behaviors()
     {
         return [
@@ -33,7 +37,11 @@ class TestController extends BaseController
      */
     public function actionIndex()
     {
-        return $this->index(new TestSearch());
+//        yii::$container->set('app\modules\admin\widgets\adminLTE\AdminLTE', ['isHeader'=>false]);
+        $admin = Yii::$app->get('adminLTE');
+        $admin->isHeader = true;
+        return $this->renderContent('sss');
+        //return $this->index(new TestSearch());
     }
 
     /**

@@ -21,6 +21,11 @@ class Test extends \yii\db\ActiveRecord
         return 'test';
     }
 
+    public static function displayName()
+    {
+        return 'Тест';
+    }
+
     /**
      * @inheritdoc
      */

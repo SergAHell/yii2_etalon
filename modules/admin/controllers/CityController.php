@@ -12,5 +12,9 @@ use app\modules\admin\base\BaseController;
 
 class CityController extends BaseController
 {
+    public $layout = 'altmain';
+    
     public $modelName = 'City';
+    
+    
 }
