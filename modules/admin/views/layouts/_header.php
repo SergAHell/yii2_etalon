@@ -1,3 +1,4 @@
+<?php die(); ?>
 <header class="main-header">
 
 	<?php if (!Yii::$app->user->isGuest) {?>

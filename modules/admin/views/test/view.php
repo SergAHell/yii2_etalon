@@ -40,30 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
 						'header' => '<h4 class="modal-title">Detail View Demo</h4>',
 						'toggleButton' => ['name'=>'span', 'label' => '<i class="glyphicon glyphicon-th-list"></i> Detail View in Modal', 'class' => 'btn btn-primary']
 					]);
-//					echo Alert::widget([
-//						'options' => [
-//							'class' => 'alert-info',
-//						],
-//						'body' => 'Say hello...',
-//					]);
-//					echo Alert::widget([
-//						'options' => [
-//							'class' => 'alert-warning',
-//						],
-//						'body' => 'Say hello...',
-//					]);
-//					echo Alert::widget([
-//						'options' => [
-//							'class' => 'alert-error',
-//						],
-//						'body' => 'Say hello...',
-//					]);
-//					echo Alert::widget([
-//						'options' => [
-//							'class' => 'alert-success',
-//						],
-//						'body' => 'Say hello...',
-//					]);
 					$dv = DetailView::widget([
 						'model' => $model,
 						'mode'=>DetailView::MODE_VIEW,

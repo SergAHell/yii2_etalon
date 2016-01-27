@@ -12,6 +12,11 @@ use yii\bootstrap\Modal;
 
 $this->title = '';
 $this->params['breadcrumbs'][] = $this->title;
+$fields = [];
+foreach($model->attributes() as $i){
+    $fields[] = $i;
+}
+//var_dump($fields);die();
 ?>
 
 <div class="test-index">
@@ -25,38 +30,40 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <div class="box-body">
 
-                    <?= GridView::widget([
+                    <?php
+                    $columns = [];
+                    $columns[] = ['class' => '\kartik\grid\SerialColumn'];
+                    foreach($model->attributes() as $i){
+                        $columns[] = $i;
+                    }
+                    $columns[] = [
+                        'class' => '\kartik\grid\ActionColumn',
+//                        'template' => '{view} {update} {delete}',
+//                        'buttons'=>[
+//                            'view' => function ($url, $model) {
+//                                ob_start();
+//                                Modal::begin([
+//                                    'header' => '<h4 class="modal-title">'.$model->name.'</h4>',
+//                                    'toggleButton' => ['tag'=>'a', 'label'=>'<span class="glyphicon glyphicon-eye-open"></span>']
+//                                ]);
+//                                echo DetailView::widget([
+//                                    'model' => $model,
+//                                    'mode'=>DetailView::MODE_VIEW,
+//                                    'condensed' => false,
+//                                    'hover' => true,
+//                                    'attributes' => $model->attributes()
+//                                ]);
+//                                Modal::end();
+//                                return ob_get_clean();
+//                            }
+//                        ]
+                    ];
+                    
+                    echo GridView::widget([
                         'layout'=>"{pager}\n{toolbar}\n{items}\n{pager}{summary}",
                         'dataProvider' => $dataProvider,
 //						'filterModel' => $searchModel,
-                        'columns' => [
-                            ['class' => '\kartik\grid\SerialColumn'],
-//							'id',
-                            'name',
-//                            'population',
-                            [
-                                'class' => '\kartik\grid\ActionColumn',
-                                'template' => '{view} {update} {delete}',
-                                'buttons'=>[
-                                    'view' => function ($url, $model) {
-                                        ob_start();
-                                        Modal::begin([
-                                            'header' => '<h4 class="modal-title">'.$model->name.'</h4>',
-                                            'toggleButton' => ['tag'=>'a', 'label'=>'<span class="glyphicon glyphicon-eye-open"></span>']
-                                        ]);
-                                        echo DetailView::widget([
-                                            'model' => $model,
-                                            'mode'=>DetailView::MODE_VIEW,
-                                            'condensed' => false,
-                                            'hover' => true,
-                                            'attributes' => $model->attributes() 
-                                        ]);
-                                        Modal::end();
-                                        return ob_get_clean();
-                                    }
-                                ]
-                            ],
-                        ],
+                        'columns' => $columns,
                         'responsive' => true,
                         'hover' => true,
                         'toolbar' => [

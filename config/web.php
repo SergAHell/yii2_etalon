@@ -35,7 +35,7 @@ $config = [
 //            'loginAdminUrl'=> '/admin/default/login',
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'site/index',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

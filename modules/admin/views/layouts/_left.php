@@ -1,3 +1,4 @@
+<?php die(); ?>
 <aside class="main-sidebar">
 	<?php if (!Yii::$app->user->isGuest) {?>
 	<!-- sidebar: style can be found in sidebar.less -->

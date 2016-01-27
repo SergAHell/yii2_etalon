@@ -16,34 +16,9 @@ class DefaultController extends BaseController
     {
         return $this->render('index');
     }
-
-    /**
-     * @return string|\yii\web\Response
-     */
-    public function actionLogin()
-    {
-        if (!\Yii::$app->user->isGuest) {
-            return Yii::$app->getResponse()->redirect('index');
-        }
-
-        $model = new AuthUser();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return Yii::$app->getResponse()->redirect('index');
-            //return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+    
+    public function actionError(){
+        return $this->renderContent('404 Sorry! Page not found!');
     }
-
-    /**
-     * @return yii\web\Response
-     */
-    public function actionLogout()
-    {
-        \Yii::$app->user->logout();
-
-        return $this->goHome();
-    }
-
+    
 }

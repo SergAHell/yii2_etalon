@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\widgets\adminLTE;
 
+use yii;
 use yii\base\Widget;
 
 class AdminLTE extends Widget
@@ -38,7 +39,21 @@ class AdminLTE extends Widget
 		]);
 	}
 
-	public function addHeadDropDown($classIcon, $count, $classCount, $subRender){
+	public function login($authUser, $routeName)
+	{
+		if (!Yii::$app->user->isGuest) {
+			return Yii::$app->getResponse()->redirect($routeName);
+		}
+
+		$model = $authUser;
+		if ($model->load(Yii::$app->request->post()) && $model->login()) {
+			return Yii::$app->getResponse()->redirect($routeName);
+		}
+		echo $this->run($this->render('login', ['model' => $model,]));
+	}
+
+	public function addHeadDropDown($classIcon, $count, $classCount, $subRender)
+	{
 		$template = '<li class="dropdown messages-menu">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<i class="fa {classIcon}"></i>
@@ -55,5 +70,4 @@ class AdminLTE extends Widget
 	}
 
 
-	
 }

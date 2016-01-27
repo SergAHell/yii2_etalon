@@ -1,4 +1,5 @@
 <?php
+die();
 use yii\helpers\Html;
 use app\modules\admin\assets\AdminAsset;
 //use app\modules\admin\components;
