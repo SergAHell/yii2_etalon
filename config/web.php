@@ -61,7 +61,7 @@ $config = [
             'charset' => 'utf8',
         ],
         'adminLTE' => [
-            'class'=>'app\modules\admin\widgets\adminLTE\AdminLTE',
+            'class'=>'app\components\adminLTE\AdminLTE',
         ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',

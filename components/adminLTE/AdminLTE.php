@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\admin\widgets\adminLTE;
+namespace app\components\adminLTE;
 
 use yii;
 use yii\base\Widget;

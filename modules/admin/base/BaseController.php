@@ -5,7 +5,7 @@ namespace app\modules\admin\base;
 use yii;
 use yii\web\Controller;
 use app\models\AuthUser;
-use app\modules\admin\widgets\adminLTE\AdminLTE;
+use app\components\adminLTE\AdminLTE;
 use yii\helpers\Url;
 
 class BaseController extends Controller
