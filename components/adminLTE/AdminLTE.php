@@ -60,7 +60,7 @@ class AdminLTE extends Widget
 		}
 		$this->isHeader = false;
 		$this->isLeft = false;
-		echo $this->run($this->render('login', ['model' => $model,]));
+		return $this->run($this->render('login', ['model' => $model,]));
 	}
 
 	public function addHeadDropDown($classIcon, $count, $classCount, $subRender)
