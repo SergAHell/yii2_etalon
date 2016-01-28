@@ -62,6 +62,7 @@ $config = [
         ],
         'adminLTE' => [
             'class'=>'app\components\adminLTE\AdminLTE',
+            'isRight' => true,
         ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
