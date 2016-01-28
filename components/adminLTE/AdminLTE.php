@@ -10,8 +10,8 @@ class AdminLTE extends Widget
 	public $content = '';
 	public $userName = '';
 	public $isHeader = true;
+	public $isLeft = true;
 	public $isFooter = true;
-	public $menu = [];
 	public $isSearch = false;
 	public $isUserPanel = false;
 	public $isRight = false;
@@ -20,7 +20,11 @@ class AdminLTE extends Widget
 		'long' => '<span class="logo-lg"><b>Admin</b>LTE</span>',
 		'short' => '<span class="logo-mini"><b>A</b>LT</span>',
 	];
+	public $menu = [];
 	public $headDropDown = [];
+
+	private $_isLeft;
+	private $_isHeader;
 
 	public function run($content = null)
 	{
@@ -45,10 +49,17 @@ class AdminLTE extends Widget
 			return Yii::$app->getResponse()->redirect($routeName);
 		}
 
+		$this->_isHeader = $this->isHeader;
+		$this->_isLeft = $this->isLeft;
+
 		$model = $authUser;
 		if ($model->load(Yii::$app->request->post()) && $model->login()) {
+			$this->isHeader = $this->_isHeader;
+			$this->isLeft = $this->_isLeft;
 			return Yii::$app->getResponse()->redirect($routeName);
 		}
+		$this->isHeader = false;
+		$this->isLeft = false;
 		echo $this->run($this->render('login', ['model' => $model,]));
 	}
 

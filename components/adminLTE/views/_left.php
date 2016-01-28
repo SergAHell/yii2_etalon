@@ -1,5 +1,5 @@
 <aside class="main-sidebar">
-	<?php if (!Yii::$app->user->isGuest) {?>
+	<?php if ($base->isLeft) {?>
 	<!-- sidebar: style can be found in sidebar.less -->
 	<section class="sidebar">
 		<?php if ($base->isUserPanel) { ?>

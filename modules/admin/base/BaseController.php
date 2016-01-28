@@ -6,12 +6,10 @@ use yii;
 use yii\web\Controller;
 use app\models\AuthUser;
 use app\components\adminLTE\AdminLTE;
-use yii\helpers\Url;
+use yii\web\NotFoundHttpException;
 
 class BaseController extends Controller
 {
-	public $layout = 'altmain';
-
 	/** @var  AdminLTE */
 	public $admin;
 	
@@ -24,14 +22,10 @@ class BaseController extends Controller
 
 		$this->admin = Yii::$app->get('adminLTE');
 
-//		if (Yii::$app->user->isGuest) {
-//			$this->admin->login(new AuthUser(), Yii::$app->request->url);
-//			return false;
-//		}
-
 		$this->makeMenu();
 		$this->makeHeadDropDown();
-		parent::init(); 
+		parent::init();
+		return true;
 	}
 
 	public function makeMenu(){

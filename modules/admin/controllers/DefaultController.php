@@ -16,7 +16,16 @@ class DefaultController extends BaseController
     {
         return $this->render('index');
     }
-    
+
+
+    public function actionLogin()
+    {
+    }
+
+    public function actionLogout()
+    {
+    }
+
     public function actionError(){
         return $this->renderContent('404 Sorry! Page not found!');
     }
