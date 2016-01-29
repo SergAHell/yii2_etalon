@@ -29,8 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
                         'columns' => [
-//                            ['class' => '\kartik\grid\SerialColumn'],
-//                            'id',
+                            [
+                                'attribute' => 'avatar',
+                                'format'=>'html',
+                                'value' => function($model){
+                                    return !is_null($model->avatar) ? Html::img($model->avatar, ['width' => '170px']) : null;
+                                }
+                            ],
                             'username',
                             'email:email',
 //                            'auth_key',
@@ -38,12 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
 //                            'password_reset_token',
                             'role',
                             'is_blocked',
-//                            [
-//                                'attribute'=>'rnd',
-//                                'value' => function($model, $key, $index, $column){
-//                                    return mt_rand(1,100);
-//                                }
-//                            ],
                             [
                                 'class' => '\kartik\grid\ActionColumn',
                                 'width' => 70,

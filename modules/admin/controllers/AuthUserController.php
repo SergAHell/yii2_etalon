@@ -9,6 +9,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use app\modules\admin\base\BaseController;
+use yii\web\UploadedFile;
 
 /**
  * AuthUserController implements the CRUD actions for AuthUser model.
@@ -78,44 +79,76 @@ class AuthUserController extends BaseController
 //        }
 //    }
 
-//    /**
-//     * Creates a new AuthUser model.
-//     * If creation is successful, the browser will be redirected to the 'view' page.
-//     * @return mixed
-//     */
-//    public function actionCreate()
-//    {
-//        $model = new AuthUser();
-//
-//        if ( $model->load(Yii::$app->request->post()) && $model->validate() && $model->save() ) {
-//            return $this->redirect(['index']);
-//        } else {
-//            return $this->render('create', [
-//                'model' => $model,
-//            ]);
-//        }
-//    }
+    public function saveAvatar($model){
+        /** @var UploadedFile $file */
+        $file = UploadedFile::getInstance($model, 'avatar');
+        var_dump($model);
+        var_dump($file);
+      die();
 
-//    /**
-//     * Updates an existing AuthUser model.
-//     * If update is successful, the browser will be redirected to the 'view' page.
-//     *
-//     * @param integer $id
-//     *
-//     * @return mixed
-//     */
-//    public function actionUpdate($id)
-//    {
-//        $model = $this->findModel($id);
-//
-//        if ( $model->load(Yii::$app->request->post()) && $model->save() ) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        } else {
-//            return $this->render('update', [
-//                'model' => $model,
-//            ]);
-//        }
-//    }
+        if (is_null($file) || empty($file->name)) {
+            /** @var Avatar avatar */
+            $model->avatar = isset($model->getOldAttributes()['avatar']) ? $model->getOldAttributes()['avatar'] : null;
+            return true;
+        }
+        $base = Yii::$app->basePath . '/web';
+        $path = '/uploads/';
+        $name = $file->name;
+        $model->avatar = $path.$name;
+        $file->saveAs($base . $path . $name);
+        return true;
+    }
+
+    /**
+     * Creates a new AuthUser model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreate()
+    {
+        $model = new AuthUser();
+
+        if ( $model->load(Yii::$app->request->post()) && $model->validate() && $this->saveAvatar($model) && $model->save() ) {
+            //$this->saveAvatar($model);
+//            $file = UploadedFile::getInstance($model, 'avatar');
+//            var_dump($file);
+            //$model->avatar =
+
+            return $this->redirect(['index']);
+        } else {
+            return $this->render('create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+    /**
+     * Updates an existing AuthUser model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     *
+     * @param integer $id
+     *
+     * @return mixed
+     */
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        if ( $model->load(Yii::$app->request->post()) && $model->validate() && $this->saveAvatar($model) && $model->save() ) {
+//            $this->saveAvatar($model);
+//            $file = UploadedFile::getInstance($model, 'avatar');
+//            var_dump($file);
+//            var_dump($model);
+//            var_dump($_FILES);
+//            //$model->avatar->saveAs(Yii::$app->basePath . '/uploads/' . $model->avatar);
+//            die();
+            return $this->redirect(['index']);
+        } else {
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }
+    }
 
 //    /**
 //     * Deletes an existing AuthUser model.

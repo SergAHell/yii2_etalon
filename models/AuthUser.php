@@ -132,7 +132,9 @@ class AuthUser extends ActiveRecord implements \yii\web\IdentityInterface
 	}
 
 	public function generatePassword(){
-		$this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+		if ( !empty( $this->password ) ) {
+			$this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+		}
 		return true;
 	}
 
@@ -149,10 +151,11 @@ class AuthUser extends ActiveRecord implements \yii\web\IdentityInterface
 	public function rules()
 	{
 		return [
-			[['username', 'email', 'password', 'role'], 'required'],
-			// username and password are both required
-//			[['username', 'password'], 'required'],
+			[['username', 'email', 'role'], 'required'],
+			[['avatar'], 'safe'],
+			[['avatar'], 'image', 'extensions' => 'jpg, gif, png'],
 			// rememberMe must be a boolean value
+//			[['username', 'password'], 'required'],
 //			['rememberMe', 'boolean'],
 			// password is validated by validatePassword()
 //			['password', 'validateFormPassword'],
@@ -192,7 +195,8 @@ class AuthUser extends ActiveRecord implements \yii\web\IdentityInterface
 		return [
 			'username'=>'Имя пользователя',
 			'password' => 'Пароль',
-			'rememberMe' => 'Запомнить меня'
+			'rememberMe' => 'Запомнить меня',
+			'avatar' => 'Аватар',
 		];
 	}
 
