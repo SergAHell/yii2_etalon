@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\City */
+/* @var $model app\models\AuthUser */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Cities', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Auth Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="city-view">
+<div class="auth-user-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -27,11 +27,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= DetailView::widget([
         'model' => $model,
-//        'attributes' => [
-//            'id',
-//            'name',
-//            'population',
-//        ],
+        'attributes' => [
+            'id',
+            'username',
+            'email:email',
+            'auth_key',
+            'password_hash',
+            'password_reset_token',
+            'role',
+            'is_blocked',
+        ],
     ]) ?>
 
 </div>

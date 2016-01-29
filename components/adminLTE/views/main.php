@@ -25,7 +25,7 @@ $user = \Yii::$app->user->identity;
 <?php if (false && (Yii::$app->controller->action->id === 'login' || Yii::$app->user->isGuest)) {
 	echo $content; // login
 } else { ?>
-	<body class="sidebar-mini skin-blue <?=$base->isCollapsed ? 'sidebar-collapse' : '' ?>">
+	<body class="sidebar-mini skin-blue <?=$base->isCollapse ? 'sidebar-collapse' : '' ?>">
 	<?php $this->beginBody() ?>
 	<div class="wrapper">
 		<?= $this->render( '_left.php',  ['base'=>$base, 'leftMenu'=>$leftMenu] ) ?>

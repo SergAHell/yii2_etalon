@@ -19,7 +19,7 @@ foreach($model->attributes() as $i){
 //var_dump($fields);die();
 ?>
 
-<div class="test-index">
+<div class="base-index">
 
     <div class="row">
         <div class="col-lg-9">

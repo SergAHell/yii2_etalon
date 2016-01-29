@@ -15,7 +15,7 @@ class AdminLTE extends Widget
 	public $isSearch = false;
 	public $isUserPanel = false;
 	public $isRight = false;
-	public $isCollapsed = false;
+	public $isCollapse = false;
 	public $adminName = [
 		'long' => '<span class="logo-lg"><b>Admin</b>LTE</span>',
 		'short' => '<span class="logo-mini"><b>A</b>LT</span>',

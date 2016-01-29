@@ -46,6 +46,12 @@ class BaseController extends Controller
 					'icon' => 'fa-rss',
 					'active' => strpos(Yii::$app->request->url, '/admin/test') === 0,
 				],
+				[
+					'label' => 'Пользователи системы',
+					'url' => '/admin/auth-user',
+					'icon' => 'fa-rss',
+					'active' => strpos(Yii::$app->request->url, '/admin/authuser') === 0,
+				],
 			],
 		];
 	}
@@ -120,7 +126,7 @@ class BaseController extends Controller
 	{
 		$model = $this->getModel();
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+		if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->save()) {
 			//return $this->redirect(['view', 'id' => $model->id]);
 			return $this->redirect(['index']);
 		} else {
@@ -140,7 +146,7 @@ class BaseController extends Controller
 	{
 		$model = $this->findModel($id);
 
-		if ($model->load(Yii::$app->request->post()) && $model->save()) {
+		if ($model->load(Yii::$app->request->post()) && $model->validate() &&$model->save()) {
 			//return $this->redirect(['view', 'id' => $model->id]);
 			return $this->redirect(['index']);
 		} else {

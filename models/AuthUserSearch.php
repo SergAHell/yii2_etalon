@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\City;
+use app\models\AuthUser;
 
 /**
- * CitySearch represents the model behind the search form about `app\models\City`.
+ * AuthUserSearch represents the model behind the search form about `app\models\AuthUser`.
  */
-class CitySearch extends City
+class AuthUserSearch extends AuthUser
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class CitySearch extends City
     public function rules()
     {
         return [
-            [['id', 'population'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'is_blocked'], 'integer'],
+            [['username', 'email', 'auth_key', 'password_hash', 'password_reset_token', 'role'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class CitySearch extends City
      */
     public function search($params)
     {
-        $query = City::find();
+        $query = AuthUser::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,10 +57,15 @@ class CitySearch extends City
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'population' => $this->population,
+            'is_blocked' => $this->is_blocked,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'username', $this->username])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
+            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
+            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
+            ->andFilterWhere(['like', 'role', $this->role]);
 
         return $dataProvider;
     }
