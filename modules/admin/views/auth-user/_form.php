@@ -11,7 +11,6 @@ use app\models\AuthUser;
 ?>
 
 <div class="auth-user-form">
-
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
@@ -22,7 +21,7 @@ use app\models\AuthUser;
     <?= $form->field($model, 'avatar')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'pluginOptions' => [
-            'allowedFileExtensions'=>['jpg','gif','png'],
+            'allowedFileExtensions'=>['jpg','gif','png', 'jpeg'],
 //            'showPreview' => true,
 //            'showCaption' => true,
             'showRemove' => false,
@@ -35,13 +34,13 @@ use app\models\AuthUser;
             'mainClass' => 'input-group-lg',
 
             'initialPreview' => [
-                is_null($model->avatar) ? null : Html::img($model->avatar, ['class' => 'file-preview-image', 'alt' => 'avatar', 'title' => 'Avatar']),
+                is_null($model->getAvatar()) ? null : Html::img($model->getAvatar(), ['class' => 'file-preview-image', 'alt' => 'avatar', 'title' => 'Avatar']),
             ],
             'initialCaption' => "Загрузите аватарку",
 //            'overwriteInitial' => true,
         ]
     ]); ?>
-    <?= $form->field($model, 'deleteAvatar')->checkbox() ?>
+    <?= !$model->isNewRecord ? $form->field($model, 'deleteAvatar')->checkbox() : '' ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

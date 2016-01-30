@@ -85,7 +85,8 @@ class AuthUserController extends BaseController
 		$file = UploadedFile::getInstance($model, 'avatar');
 		if (is_null($file) || empty($file->name)) {
 			$model->setAvatar(isset($model->getOldAttributes()['avatar']) ? $model->getOldAttributes()['avatar'] : null);
-			$model->setAvatar(!Yii::$app->request->post()['AuthUser']['deleteAvatar'] ? $model->getAvatar() : null);
+			$post = Yii::$app->request->post()['AuthUser'];
+			$model->setAvatar(isset($post['deleteAvatar']) && $post['deleteAvatar'] ? null : $model->getAvatar() );
 			return true;
 		}
 		$base = Yii::$app->basePath . '/web';
