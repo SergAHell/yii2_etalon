@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93a5941756a412fcec9fecb4db01c13b",
+    "hash": "2c4dba4011519c087ead7cf90e0c730e",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -392,19 +392,24 @@
         },
         {
             "name": "kartik-v/bootstrap-fileinput",
-            "version": "v4.2.8",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "6ba4295298ee3abe26171b4e2078c27a2f3b35b0"
+                "reference": "64af9e6f580fdf65163d223ecd472e03a47ac3be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/6ba4295298ee3abe26171b4e2078c27a2f3b35b0",
-                "reference": "6ba4295298ee3abe26171b4e2078c27a2f3b35b0",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/64af9e6f580fdf65163d223ecd472e03a47ac3be",
+                "reference": "64af9e6f580fdf65163d223ecd472e03a47ac3be",
                 "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2.x-dev"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "kartik\\plugins\\fileinput\\": ""
@@ -436,7 +441,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2015-11-18 17:56:04"
+            "time": "2016-01-29 13:04:04"
         },
         {
             "name": "kartik-v/bootstrap-star-rating",
@@ -2340,7 +2345,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kartik-v/yii2-mpdf": 20,
-        "kartik-v/yii2-widgets": 20
+        "kartik-v/yii2-widgets": 20,
+        "kartik-v/bootstrap-fileinput": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

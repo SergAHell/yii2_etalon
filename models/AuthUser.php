@@ -9,17 +9,28 @@ use yii\web\IdentityInterface;
 
 /**
  * Class AuthUser
+ * @property string $username
+ * @property string $avatar
  * @package app\models
  */
 class AuthUser extends ActiveRecord implements \yii\web\IdentityInterface
 {
 
+//	Table fields	
 //	public $id;
-//	public $auth_key;
-
 //	public $username;
+//	public $email;
+//	public $auth_key;
+//	public $password_hash;
+//	public $access_token;
+//	public $password_reset_token;
+//	public $is_blocked;
+//	public $role;
+//	public $avatar;
+
 	public $password;
 	public $rememberMe = true;
+	public $deleteAvatar = false;
 
 	public static $roles = [
 		'admin' => 'Администратор',
@@ -197,7 +208,27 @@ class AuthUser extends ActiveRecord implements \yii\web\IdentityInterface
 			'password' => 'Пароль',
 			'rememberMe' => 'Запомнить меня',
 			'avatar' => 'Аватар',
+			'deleteAvatar' => 'Удалить аватар'
 		];
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getAvatar()
+	{
+		return $this->avatar;
+	}
+
+	/**
+	 * @param mixed $avatar
+	 */
+	public function setAvatar($avatar)
+	{
+		$this->avatar = $avatar;
+	}
+	
+	
+	
 
 }

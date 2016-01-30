@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute' => 'avatar',
                                 'format'=>'html',
                                 'value' => function($model){
-                                    return !is_null($model->avatar) ? Html::img($model->avatar, ['width' => '170px']) : null;
+                                    return !is_null($model->avatar) ? Html::img($model->avatar, ['width' => '50px']) : null;
                                 }
                             ],
                             'username',

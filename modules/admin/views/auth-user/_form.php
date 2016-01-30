@@ -22,22 +22,26 @@ use app\models\AuthUser;
     <?= $form->field($model, 'avatar')->widget(FileInput::classname(), [
         'options' => ['accept' => 'image/*'],
         'pluginOptions' => [
-            'showPreview' => true,
-            'showCaption' => true,
-            'showRemove' => true,
+            'allowedFileExtensions'=>['jpg','gif','png'],
+//            'showPreview' => true,
+//            'showCaption' => true,
+            'showRemove' => false,
             'showUpload' => false,
+//            'previewFileType'=>'image',
 
             'browseLabel' => '&nbsp;&nbsp; Открыть',
-            'removeLabel' => '&nbsp;&nbsp; Удалить',
+//            'removeLabel' => '&nbsp;&nbsp; Удалить',
+//            'removeIcon'=> '<i class="glyphicon glyphicon-remove"></i>',
             'mainClass' => 'input-group-lg',
 
             'initialPreview' => [
                 is_null($model->avatar) ? null : Html::img($model->avatar, ['class' => 'file-preview-image', 'alt' => 'avatar', 'title' => 'Avatar']),
             ],
             'initialCaption' => "Загрузите аватарку",
-            'overwriteInitial' => true,
+//            'overwriteInitial' => true,
         ]
     ]); ?>
+    <?= $form->field($model, 'deleteAvatar')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
