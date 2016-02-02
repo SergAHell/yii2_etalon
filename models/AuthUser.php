@@ -163,8 +163,12 @@ class AuthUser extends ActiveRecord implements \yii\web\IdentityInterface
 	{
 		return [
 			[['username', 'email', 'role'], 'required'],
-			[['avatar'], 'safe'],
-			[['avatar'], 'image', 'extensions' => 'jpg, gif, png'],
+			[['username', 'email'], 'filter', 'filter'=>'trim', 'skipOnArray'=>true],
+			['email', 'email', 'message'=>'Не корректный мыло'],
+			['email', 'unique'],
+			['email', 'string', 'max'=>255],
+//			['role', 'default', 'value' => 'Администратор'],
+			[['avatar'], 'image', 'extensions' => 'jpg, gif, png, jpeg', 'maxSize' => 3 * 1024*1024, 'maxWidth' => 2000, 'maxHeight' => 000],
 			// rememberMe must be a boolean value
 //			[['username', 'password'], 'required'],
 //			['rememberMe', 'boolean'],
