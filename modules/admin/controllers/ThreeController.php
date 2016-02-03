@@ -18,4 +18,8 @@ class ThreeController extends BaseController
     }
 
 
+    public function actionFp(){
+        return $this->render('fp');
+    }
+
 }
